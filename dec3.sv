@@ -1,0 +1,18 @@
+module dec3 #(parameter N = 8) (output logic [N-1:0] y, input logic [clog2(N)-1:0] a);
+
+function int clog2(input int n);
+  begin
+  clog2 = 0;
+  n = n - 1;
+  while (n > 0)
+    begin
+    clog2 = clog2 + 1;
+    n = n >> 1;
+    end
+  end
+endfunction
+
+always_comb
+  y = 1'b1 << a;
+
+endmodule
